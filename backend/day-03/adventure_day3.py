@@ -45,6 +45,8 @@ def match_no(choice):
             return True
         case "N":
             return True
+        case _:
+            return False
 
 if __name__ == "__main__":
     main()
