@@ -1,3 +1,5 @@
+import sys
+
 game = ["rock", "scissors", "paper"]
 
 def main():
@@ -9,7 +11,7 @@ def main():
         print("Player1 wins!") if winner else print("Player2 wins!")
     else:
         print(winner)
-    exit(0)
+    sys.exit(0)
 
 def rps_input(prompt):
     count = 0
@@ -21,7 +23,7 @@ def rps_input(prompt):
             count += 1
             if count > 3:
                 print("Too_many_errors:exit_code(1)")
-                exit(1)
+                sys.exit(1)
 
 
 def rps_game(p1 ,p2):
@@ -38,7 +40,7 @@ def rps_game(p1 ,p2):
             except IndexError:
                 return p2 == game[0]
         print("Too_many_errors:exit_code(2)")
-        exit(2)
+        sys.exit(2)
 
 if __name__=="__main__":
     main()

@@ -1,4 +1,4 @@
-import sys
+from sys import exit
 
 game = ["rock", "scissors", "paper"]
 
@@ -8,24 +8,22 @@ def main():
 
     winner = rps_game(one, two)
     print(winner)
-    sys.exit(0)
+    exit(0)
 
 def rps_input(prompt, attempts = 3):
     count = 0
     while True:
-        pick = input(prompt)
+        pick = input(prompt).strip().lower()
         if pick in game:
             return pick
         else:
             count += 1
             if count > attempts:
                 print("Too_many_errors:exit_code(1)")
-                sys.exit(1)
+                exit(1)
 
 
 def rps_game(p1 ,p2):
-    p1 = p1.strip().lower()
-    p2 = p2.strip().lower()
 
     if p1 == p2:
         return "Tie!"
