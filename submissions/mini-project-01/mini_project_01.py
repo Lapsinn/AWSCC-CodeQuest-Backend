@@ -1,10 +1,10 @@
-import sys
+from sys import exit
 
 grocery = []
 
 def main():
     error = 0
-    view = 0
+    view = False
     while error < 10:
         print("Options:",
             "1. Add item to the shopping list",
@@ -15,17 +15,20 @@ def main():
 
         if option == '1':
             add_to_list("Enter the item you want to add: ")
+            view = False
         elif option == '2':
             view_list("Your shopping list: ")
-            view += 1
+            view = True
         elif option == '3':
             remove_from_list("Enter the item you want to remove: ")
+            view = False
         elif option == '4':
-            if view > 0:
-                print("Goodbye!")
+            if view:
+                print("Goodbye!\n")
+                break
             else:
                 view_list("Your shopping list: ")
-                print("Goodbye!")
+                print("Goodbye!\n")
                 break
         else:
             print("Invalid Input")
@@ -35,10 +38,10 @@ def main():
 
     #outside the loop
     if error < 10:
-        sys.exit(0)
+        exit(0)
     else:
         print("Too many errors")
-        sys.exit(1)
+        exit(1)
 
 def add_to_list(prompt):
     item = input(prompt).strip().capitalize()
@@ -46,7 +49,6 @@ def add_to_list(prompt):
         grocery.append(item)
     else:
         print("Item already in list.")
-        return 0
 
 def view_list(prompt):
     grocery.sort()
